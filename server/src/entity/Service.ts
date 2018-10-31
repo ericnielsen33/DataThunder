@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
-import { Team } from './Team';
+import { Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, Column } from 'typeorm';
 import { Patient } from './Patient';
 
 @Entity()
@@ -7,9 +6,8 @@ export class Service {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToMany(type => Team, team => team.services)
-  @JoinTable()
-  teams: Team[];
+  @Column()
+  name: string;
 
   @ManyToMany(type => Patient, patient => patient.services)
   @JoinTable()

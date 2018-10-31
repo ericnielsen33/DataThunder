@@ -18,7 +18,6 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt'){
         console.log(payload);
         await this.userService.findOneByEmail(payload.email)
             .then(user => {
-                console.log(user);
                 return user;
             })
             .catch(err => {

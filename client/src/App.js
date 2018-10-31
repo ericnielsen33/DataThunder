@@ -5,6 +5,7 @@ import Header from "./components/Layout/Header";
 import Dashboard from "./views/Dashboard";
 import Register from "./views/Register";
 import Signin from "./views/Signin";
+import ProfileCreate from "./views/ProfileCreate";
 
 function applyRouter(wrappedComponent) {
   return withRouter(wrappedComponent);
@@ -24,6 +25,7 @@ class App extends Component {
             <Route exact path="/dashboard" render={applyRouter(Dashboard)} />
             <Route exact path="/register" render={applyRouter(Register)} />
             <Route exact path="/signin" render={applyRouter(Signin)} />
+            <Route exact path="/profile" render={applyRouter(ProfileCreate)} />
           </Switch>
         </div>
       </BrowserRouter>

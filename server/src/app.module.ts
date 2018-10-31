@@ -8,11 +8,10 @@ import { AppService } from './app.service';
 // import { ConfigModule } from './modules/config/config.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ResidentModule } from 'modules/resident/resident.module';
-import { TeamModule } from './modules/team/team.module';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), AuthModule, ResidentModule, TeamModule, UserModule],
+  imports: [TypeOrmModule.forRoot(), AuthModule, ResidentModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })

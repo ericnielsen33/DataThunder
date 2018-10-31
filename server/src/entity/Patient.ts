@@ -1,7 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, ManyToOne } from 'typeorm';
-import { Team } from './Team';
 import { Service } from './Service';
-
+// refernce v2 of the firbase datastore...MLN, gender, location: sting
 @Entity()
 export class Patient {
   @PrimaryGeneratedColumn()
@@ -14,10 +13,14 @@ export class Patient {
   lastName: string;
 
   @Column()
+  gender: string;
+
+  @Column()
+  location: string;
+
+  @Column()
   dateofBirth: Date;
   @ManyToMany(type => Service, service => service.patients)
   services: Service[];
   // should patient be attached to jobs...residents are related to teams which relate to services... patients use services
-  @ManyToOne(type => Team, team => team.patients)
-  primaryTeam: Team;
 }

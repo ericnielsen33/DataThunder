@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, AfterInsert } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, AfterInsert } from 'typeorm';
 import { genSaltSync, hashSync } from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { Resident } from './Resident';
+import { Organization } from './Organization';
 
 @Entity()
 export class User {
@@ -27,6 +28,9 @@ export class User {
 
   @OneToOne(type => Resident, resident => resident.user)
   resident: Resident;
+
+  @ManyToOne(type => Organization, org => org.users)
+  organization: Organization;
 
   @AfterInsert()
   setToken() {

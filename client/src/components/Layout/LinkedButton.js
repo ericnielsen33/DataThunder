@@ -11,10 +11,8 @@ class LinkedButton extends Component {
   };
   handleLogout = () => {
       if (this.props.userStore.user) {
-          console.log("loggingout")
           this.props.userStore.logoutUser()
       }
-      console.log("handlelogout");
   }
   render() {
     return (

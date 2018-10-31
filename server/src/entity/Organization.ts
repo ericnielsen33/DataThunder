@@ -8,7 +8,7 @@ import {
     JoinColumn,
 } from 'typeorm';
 import { User } from './User';
-import { Team } from './Team';
+import { Location } from './Location';
 
 @Entity()
 export class Organization {
@@ -19,6 +19,9 @@ export class Organization {
     @Column({ unique: true })
     name: string;
 
-    @Column()
-    slug: string;
+    @OneToMany(type => Location, location => location.organization)
+    locations: Location[];
+
+    @OneToMany(type => User, user => user.organization)
+    users: User[];
 }
