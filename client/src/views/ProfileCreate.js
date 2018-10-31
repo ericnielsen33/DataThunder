@@ -65,7 +65,6 @@ class ProfileCreate extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         const { level, pager, mobile } = this.state;
-        console.log(`Level: ${level}, Pager: ${pager} mobile: ${mobile}`);
         console.log(this.props);
     };
 
