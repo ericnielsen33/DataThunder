@@ -6,6 +6,7 @@ import { JwtStrategy } from './passport/jwt.strategy';
 import { BearerStrategy } from './passport/bearer.strategy';
 import { UserModule } from '../user/user.module';
 import { AuthController } from './auth.controller';
+import { OrganizationModule } from 'modules/organization/organization.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthController } from './auth.controller';
       },
     }),
     UserModule,
+    OrganizationModule,
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, BearerStrategy],
   controllers: [AuthController],

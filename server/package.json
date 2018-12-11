@@ -19,6 +19,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "webpack": "webpack --config webpack.config.js",
     "schema:sync": "ts-node ./node_modules/.bin/typeorm schema:sync",
+    "schema:drop": "ts-node ./node_modules/.bin/typeorm schema:drop",
     "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "@nestjs/passport": "^5.1.0",
     "@nestjs/typeorm": "^5.2.2",
     "bcrypt": "^3.0.0",
+    "class-validator": "^0.9.1",
     "dotenv": "^6.0.0",
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",

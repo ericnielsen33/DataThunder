@@ -1,27 +1,23 @@
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    ManyToMany,
-    OneToOne,
-    OneToMany,
-    JoinColumn,
-} from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, OneToMany, OneToOne, JoinColumn, JoinTable } from 'typeorm';
 import { User } from './User';
-import { Location } from './Location';
+import { Facility } from './Facility';
 
 @Entity()
 export class Organization {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column({ unique: true })
+  name: string;
 
-    @Column({ unique: true })
-    name: string;
+  @OneToOne(type => User)
+  @JoinColumn({name: 'owner'})
+  owner: User;
 
-    @OneToMany(type => Location, location => location.organization)
-    locations: Location[];
+  @OneToMany(type => Facility, location => location.organization, {cascade: true})
+  locations: Facility[];
 
-    @OneToMany(type => User, user => user.organization)
-    users: User[];
+  @ManyToMany(type => User, user => user.organizations)
+  @JoinTable()
+  users: User[];
 }

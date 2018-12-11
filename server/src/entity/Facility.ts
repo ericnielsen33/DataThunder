@@ -15,12 +15,19 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { Organization } from './Organization';
+import { Job } from './Job';
 
 @Entity()
-export class Location {
+export class Facility {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
+  name: string;
+
   @ManyToOne(type => Organization, organization => organization.locations)
   organization: Organization;
+
+  @OneToMany(type => Job, job => job.facility)
+  jobs: Job[];
 }

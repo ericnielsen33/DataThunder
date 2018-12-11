@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, AfterInsert } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne, AfterInsert, ManyToMany, JoinTable } from 'typeorm';
 import { genSaltSync, hashSync } from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { Resident } from './Resident';
 import { Organization } from './Organization';
+import { UserRole } from './UserRole';
 
 @Entity()
 export class User {
@@ -26,11 +27,15 @@ export class User {
   @Column()
   token: string;
 
-  @OneToOne(type => Resident, resident => resident.user)
+  @OneToOne(type => Resident, resident => resident.user, { cascade: true, nullable: true})
   resident: Resident;
 
-  @ManyToOne(type => Organization, org => org.users)
-  organization: Organization;
+  @ManyToMany(type => Organization, org => org.users, { nullable: true })
+  organizations: Organization[];
+
+  @ManyToMany(type => UserRole, {eager: true})
+  @JoinTable()
+  roles: UserRole[];
 
   @AfterInsert()
   setToken() {

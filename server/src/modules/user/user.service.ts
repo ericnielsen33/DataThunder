@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { compareSync } from 'bcrypt';
 import { HashService } from './hash.service';
 import { User } from '../../entity/User';
@@ -33,7 +33,7 @@ export class UserService {
         return false;
     }
     public async findOneAndSetToken(id: number): Promise<User>{
-        const user: User = await this.userRepository.findOne({id});
+        const user: User = await this.userRepository.findOne({id}, {relations: ['organizations']});
         user.token = user.generateToken();
         return this.userRepository.save(user);
     }
@@ -43,5 +43,8 @@ export class UserService {
             return user;
         }
         return null;
+    }
+    public async updateUser(user: User, updates: object ): Promise<UpdateResult | undefined>{
+        return this.userRepository.update({id: user.id}, updates);
     }
 }

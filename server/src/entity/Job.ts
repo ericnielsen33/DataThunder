@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
 import { Resident } from './Resident';
+import { Facility } from './Facility';
 
 @Entity()
 export class Job {
@@ -9,36 +10,14 @@ export class Job {
   @Column()
   title: string;
 
-  @Column()
-  level: number;
+  @Column('simple-array')
+  levels: number[];
 
   @Column()
-  shiftType: string;
+  callType: boolean;
 
-  // should eventually be represnted using PG's native tstzrange datatype for each day
-  @Column()
-  timeOfDay: string;
-
-  @Column()
-  requiredOnMonday: number;
-
-  @Column()
-  requiredOnTuesday: number;
-
-  @Column()
-  requiredOnWednesday: number;
-
-  @Column()
-  requiredOnThursday: number;
-
-  @Column()
-  requiredOnFriday: number;
-
-  @Column()
-  requiredOnSaturday: number;
-
-  @Column()
-  requiredOnSunday: number;
+  @ManyToOne(type => Facility, facility => facility.jobs)
+  facility: Facility;
 
   @ManyToMany(type => Resident, resident => resident.jobs)
   @JoinTable()
