@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { login, registerNewUser } from "../api/Auth";
+import * as api from "../api/Auth";
 
 class UserStore {
 
@@ -7,7 +7,7 @@ class UserStore {
     @observable token = null;
 
     @action registerUser(email, firstName, lastName, password){
-        registerNewUser(email, firstName, lastName, password)
+        api.registerNewUser(email, firstName, lastName, password)
             .then(data => {
                 this.user = data.user;
                 this.token = data.token;
@@ -16,7 +16,7 @@ class UserStore {
     }
 
     @action loginUser(email, password){
-        login(email, password)
+        api.login(email, password)
             .then(data => {
                 this.user = data.user;
                 this.token = data.token;
