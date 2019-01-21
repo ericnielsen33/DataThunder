@@ -1,0 +1,9 @@
+.app {
+    width: 100%
+}
+.app-header {
+    padding-bottom: 5px;
+}
+.app-content {
+    padding-top: 50px;
+}
