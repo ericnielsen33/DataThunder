@@ -1,4 +1,5 @@
 export const AUTH = '[AUTH]';
-export const CHANGE_AUTH = 'CHANGE_AUTH';
-export const FETCH_AUTH = `${AUTH} FETCH`;
+export const LOGIN_AUTH = `${AUTH} LOGIN`;
+export const LOGOUT_AUTH = `${AUTH} LOGOUT`;
+export const REGISTER_AUTH = `${AUTH} REGISTER`;
 export const SET_AUTH = `${AUTH} SET`;

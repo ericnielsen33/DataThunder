@@ -1,4 +1,4 @@
-import { API_SUCCESS, API_ERROR, AUTH, FETCH_AUTH } from "../../actions/types";
+import { API_SUCCESS, API_ERROR, AUTH, LOGIN_AUTH } from "../../actions/types";
 import { apiRequest } from "../../actions/api";
 import { setLoader } from "../../actions/ui";
 import { setAuth } from "../../actions/auth";
@@ -7,8 +7,8 @@ import { setAuth } from "../../actions/auth";
 export const authMiddleware = ({ dispatch }) => next => action => {
   next(action);
   switch (action.type) {
-    case FETCH_AUTH:
-      dispatch(apiRequest(AUTH, 'post', '/auth/login', action.payload));
+    case LOGIN_AUTH:
+      dispatch(apiRequest(AUTH, "post", "/auth/login", action.payload));
       dispatch(setLoader(true));
       break;
     case `${AUTH} ${API_SUCCESS}`:

@@ -18,7 +18,7 @@ class LoginUser extends Component {
   handleFormSubmit = (event, state) => {
     const { email, password } = state;
     event.preventDefault();
-    this.props.fetchAuth(email, password);
+    this.props.loginAuth(email, password);
     this.props.history.push("/");
   };
 

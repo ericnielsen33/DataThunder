@@ -11,14 +11,11 @@ export const apiMiddleware = ({ dispatch }) => next => action => {
   if (action.type === API_REQUEST) {
       const { entity, method, url } = action.meta;
       const { data } = action.payload;
-      console.log(data)
     axios({ method, url, data })
         .then(data => {
-          console.log(data);
           dispatch(apiSuccess(data, entity));
         })
         .catch(error => {
-          console.log(error);
           dispatch(apiError(error, entity));
         });
   }

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions/auth";
-import { Header } from "../Header";
+import { Header } from "./Header";
 import UserDashboard from '../Admin/UserDashboard';
 import LoginUser from '../Auth/LoginUser';
 
@@ -19,14 +19,18 @@ const Home = () => {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.changeAuth = this.changeAuth.bind(this);
+    this.navigate = this.navigate.bind(this);
+    this.logout = this.logout.bind(this);
   }
-  changeAuth() {
-    this.props.changeAuth(!this.props.auth.isAuthenticated);
+  navigate(url){
+    this.props.history.push(url)
+  }
+  logout() {
+    this.props.logout()
   }
   render() {
     return <div className="app">
-      <Header className="app-header" changeAuth={this.changeAuth} isAuthenticated={this.props.auth.isAuthenticated} />
+      <Header logout={this.logout} navigate={this.navigate} auth={this.props.auth} className="app-header" />
         <div className="app-content">
           <Switch>
             <Route exact path='/login' component={LoginUser} />
