@@ -29,7 +29,7 @@ export class User {
   @OneToOne(type => Resident, resident => resident.user)
   resident: Resident;
 
-  @ManyToOne(type => Organization, org => org.users)
+  @ManyToOne(type => Organization, org => org.users, { eager: true })
   organization: Organization;
 
   @AfterInsert()

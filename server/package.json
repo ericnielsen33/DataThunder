@@ -6,20 +6,23 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "migration:create" : "typeorm migration:create -n",
+    "migration:generate": "typeorm migration:generate -n",
+    "migration:run": "typeorm migration:run",
+    "schema:sync": "typeorm schema:sync",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
     "start:dev": "nodemon",
     "start:debug": "nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && tsc",
     "start:prod": "node dist/main.js",
     "start:hmr": "node dist/server",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "webpack": "webpack --config webpack.config.js",
-    "schema:sync": "ts-node ./node_modules/.bin/typeorm schema:sync",
-    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run"
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "webpack": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "@nestjs/common": "^5.1.0",

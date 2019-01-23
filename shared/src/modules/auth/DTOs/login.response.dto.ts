@@ -4,4 +4,5 @@ export class LoginResponseDTO {
   lastName: string = '';
   email: string = '';
   token: string= '';
+  roles: string[] = [];
 }
