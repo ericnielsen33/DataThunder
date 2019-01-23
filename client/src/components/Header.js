@@ -4,7 +4,7 @@ import { Menu } from "semantic-ui-react";
 
 export const Header = ({ isAuthenticated, changeAuth }) => {
   return (
-    <Menu inverted fixed="top" size="large">
+    <Menu color='teal' inverted fixed="top" size="large">
       <Menu.Item onClick={changeAuth}>{isAuthenticated ? 'Log out': 'Log in'}</Menu.Item>
     </Menu>
   );

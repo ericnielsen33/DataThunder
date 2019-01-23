@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../../redux/actions/auth";
 import { Header } from "../Header";
 import UserDashboard from '../Admin/UserDashboard';
+import LoginUser from '../Auth/LoginUser';
 
 const adminDashboard = () => {
   return (<h2>admin dashboard</h2>)}
@@ -28,6 +29,7 @@ class App extends Component {
       <Header className="app-header" changeAuth={this.changeAuth} isAuthenticated={this.props.auth.isAuthenticated} />
         <div className="app-content">
           <Switch>
+            <Route exact path='/login' component={LoginUser} />
             {/* Routes pertaining to the user role, ADMIN*/}
             <Route exact path='/' component={Home} />
             <Route exact path='/admin/users' component={UserDashboard} />
