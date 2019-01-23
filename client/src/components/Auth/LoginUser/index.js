@@ -7,7 +7,7 @@ import * as actions from "../../../redux/actions/auth";
 
 class LoginUser extends Component {
   state = {
-    username: "",
+    email: "",
     password: ""
   };
 
@@ -15,9 +15,10 @@ class LoginUser extends Component {
     const { value, name } = event.target;
     this.setState({ [name]: value });
   };
-  handleFormSubmit = event => {
+  handleFormSubmit = (event, state) => {
+    const { email, password } = state;
     event.preventDefault();
-    this.props.changeAuth(!this.props.auth.isAuthenticated);
+    this.props.fetchAuth(email, password);
     this.props.history.push("/");
   };
 
@@ -32,14 +33,14 @@ class LoginUser extends Component {
               </Header>
             </Grid.Row>
             <Grid.Row>
-              <Form onSubmit={event => this.handleFormSubmit(event)}>
+              <Form onSubmit={event => this.handleFormSubmit(event, this.state)}>
                 <Form.Input
-                  name="username"
+                  name="email"
                   onChange={this.onInputChange}
                   fluid
                   icon="user"
                   iconPosition="left"
-                  placeholder="username"
+                  placeholder="email"
                 />
                 <Form.Input
                   name="password"
