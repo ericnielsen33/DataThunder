@@ -7,11 +7,6 @@
 import {
   Entity,
   PrimaryGeneratedColumn,
-  Column,
-  ManyToMany,
-  OneToOne,
-  OneToMany,
-  JoinColumn,
   ManyToOne,
 } from 'typeorm';
 import { Organization } from './Organization';
