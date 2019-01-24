@@ -1,7 +1,15 @@
 import { SET_AUTH, LOGOUT_AUTH } from "../actions/types";
 
 const initialState = {
-  user: {}
+  user: {
+    id: null,
+    firstName: '',
+    lastName: '',
+    email: '',
+    token: '',
+    organizations: [],
+    roles: []
+  }
 };
 
 export const authReducer = (auth = initialState, action) => {
