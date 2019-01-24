@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
-import {  } from '../../containers/hasOrg';
 import UserTable from '../Base/UserTable';
 import { Container } from 'semantic-ui-react';
 

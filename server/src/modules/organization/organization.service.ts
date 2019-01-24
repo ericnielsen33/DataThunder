@@ -12,7 +12,14 @@ export class OrgService {
     async getAll(): Promise<Organization[]>{
       return await this.orgRepository.find({});
     }
+    async findOne(id: number): Promise<Organization>{
+      return await this.orgRepository.findOne({ id });
+    }
     async create(org: Organization): Promise<Organization>{
       return await this.orgRepository.save(org);
+    }
+    async update(id): Promise<Organization>{
+      const updateOrg = await this.orgRepository.findOne({ id });
+      return await this.orgRepository.save(updateOrg);
     }
 }
