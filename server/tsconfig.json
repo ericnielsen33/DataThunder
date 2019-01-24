@@ -9,8 +9,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib":[
-      "es5",
-      "es6"
+      "esnext",
+      "es2016.array.include",
+      "dom"
     ],
     "target": "es6",
     "moduleResolution": "node",
