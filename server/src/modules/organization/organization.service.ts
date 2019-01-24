@@ -19,7 +19,7 @@ export class OrgService {
       return await this.orgRepository.save(org);
     }
     async update(id): Promise<Organization>{
-      const updateOrg = await this.orgRepository.findOne({ id });
-      return await this.orgRepository.save(updateOrg);
+      const org = await this.orgRepository.findOne({ id });
+      return await this.orgRepository.save(org);
     }
 }
