@@ -4,6 +4,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { OrgService } from './organization.service';
 import { RolesGuard } from 'modules/auth/guards/roles.auth.guard';
 import { Roles } from 'modules/auth/guards/roles.decorator';
+import { Organization } from 'entity/Organization';
 
 @Controller('organizations')
 @UseGuards(AuthGuard('bearer'), RolesGuard)
@@ -12,7 +13,13 @@ export class OrgController {
 
   @Get()
   @Roles('admin')
-  async findAll(){
-    return 'made it';
+  async getAll() {
+    return await this.orgService.getAll();
+  }
+
+  @Post()
+  @Roles('admin')
+  async create(@Body('organization')org: Organization) {
+    return this.orgService.create(org);
   }
 }

@@ -18,9 +18,9 @@ export class Organization {
   name: string;
 
   @OneToMany(type => Location, location => location.organization)
-  locations: Location[];
+  locations: Promise<Location[]>;
 
   @ManyToMany(type => User, user => user.organizations)
   @JoinTable()
-  users: User[];
+  users: Promise<User[]>;
 }

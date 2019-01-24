@@ -11,7 +11,6 @@ export const orgMiddleware = ({ dispatch }) => next => action => {
       dispatch(setLoader(true));
       break;
     case `${ORG} ${API_SUCCESS}`:
-      fetch()
       dispatch(setLoader(false));
       break;
     case `${ORG} ${API_ERROR}`:

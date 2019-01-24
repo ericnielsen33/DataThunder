@@ -1,11 +1,16 @@
-import { FETCH_ORG, CREATE_ORG, UPDATE_ORG, DELETE_ORG } from "../actions/types";
+import {
+  FETCH_ORG,
+  CREATE_ORG,
+  UPDATE_ORG,
+  DELETE_ORG
+} from "../actions/types";
 
 const intitialState = {
   id: null,
-  name: '',
+  name: "",
   locations: [],
   users: []
-}
+};
 
 export const orgReducer = (org = intitialState, action) => {
   switch (action.type) {
@@ -19,6 +24,6 @@ export const orgReducer = (org = intitialState, action) => {
       break;
 
     default:
-    return org;
+      return org;
   }
-}
+};

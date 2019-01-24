@@ -9,5 +9,10 @@ export class OrgService {
     @InjectRepository(Organization)
     private readonly orgRepository: Repository<Organization>,
   ) {}
-
+    async getAll(): Promise<Organization[]>{
+      return await this.orgRepository.find({});
+    }
+    async create(org: Organization): Promise<Organization>{
+      return await this.orgRepository.save(org);
+    }
 }
